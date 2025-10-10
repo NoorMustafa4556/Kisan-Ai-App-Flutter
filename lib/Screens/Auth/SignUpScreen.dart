@@ -52,8 +52,13 @@ class _SignupScreenState extends State<SignupScreen> {
           msg: authProvider.errorMessage!,
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.BOTTOM,
+<<<<<<< HEAD
           backgroundColor: AppStyles.errorColor,
           textColor: AppStyles.whiteColor,
+=======
+          backgroundColor: Theme.of(context).colorScheme.error,
+          textColor: Colors.white,
+>>>>>>> b11e7d7 (first commit)
           fontSize: 16.0,
         );
         authProvider.clearErrorMessage();
@@ -62,8 +67,13 @@ class _SignupScreenState extends State<SignupScreen> {
           msg: "Signup Successful!",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
+<<<<<<< HEAD
           backgroundColor: AppStyles.primaryColor,
           textColor: AppStyles.whiteColor,
+=======
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          textColor: Colors.white,
+>>>>>>> b11e7d7 (first commit)
           fontSize: 16.0,
         );
         Navigator.of(context).pushReplacement(
@@ -75,6 +85,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     final authProvider = Provider.of<AuthProvider>(context);
 
     return Scaffold(
@@ -82,6 +93,16 @@ class _SignupScreenState extends State<SignupScreen> {
       appBar: AppBar(
         title: const Text(""),
         backgroundColor: AppStyles.backgroundColor,
+=======
+    final theme = Theme.of(context);
+    final authProvider = Provider.of<AuthProvider>(context);
+
+    return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
+      appBar: AppBar(
+        title: const Text(""),
+        backgroundColor: theme.scaffoldBackgroundColor,
+>>>>>>> b11e7d7 (first commit)
         elevation: 0,
         automaticallyImplyLeading: false,
       ),
@@ -95,11 +116,18 @@ class _SignupScreenState extends State<SignupScreen> {
               children: [
                 Text(
                   AppConstants.signupTitle,
+<<<<<<< HEAD
                   style: AppStyles.headlineStyle.copyWith(color: AppStyles.primaryColor),
+=======
+                  style: AppStyles.headlineStyle(context).copyWith(
+                    color: theme.colorScheme.primary,
+                  ),
+>>>>>>> b11e7d7 (first commit)
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: AppStyles.largePadding),
 
+<<<<<<< HEAD
                 // Full Name Field
                 TextFormField(
                   controller: _fullNameController,
@@ -107,6 +135,15 @@ class _SignupScreenState extends State<SignupScreen> {
                     hintText: AppConstants.fullNameHint,
                     prefixIcon: Icon(Icons.person, color: AppStyles.primaryColor),
                   ),
+=======
+                // Full Name
+                TextFormField(
+                  controller: _fullNameController,
+                  decoration: InputDecoration(
+                    hintText: AppConstants.fullNameHint,
+                    prefixIcon: Icon(Icons.person, color: theme.colorScheme.primary),
+                  ).applyDefaults(theme.inputDecorationTheme),
+>>>>>>> b11e7d7 (first commit)
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your full name';
@@ -116,6 +153,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: AppStyles.defaultPadding),
 
+<<<<<<< HEAD
                 // Email Field
                 TextFormField(
                   controller: _emailController,
@@ -123,6 +161,15 @@ class _SignupScreenState extends State<SignupScreen> {
                     hintText: AppConstants.emailHint,
                     prefixIcon: Icon(Icons.email, color: AppStyles.primaryColor),
                   ),
+=======
+                // Email
+                TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    hintText: AppConstants.emailHint,
+                    prefixIcon: Icon(Icons.email, color: theme.colorScheme.primary),
+                  ).applyDefaults(theme.inputDecorationTheme),
+>>>>>>> b11e7d7 (first commit)
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -136,16 +183,28 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: AppStyles.defaultPadding),
 
+<<<<<<< HEAD
                 // Password Field
+=======
+                // Password
+>>>>>>> b11e7d7 (first commit)
                 TextFormField(
                   controller: _passwordController,
                   decoration: InputDecoration(
                     hintText: AppConstants.passwordHint,
+<<<<<<< HEAD
                     prefixIcon: const Icon(Icons.lock, color: AppStyles.primaryColor),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscurePassword ? Icons.visibility_off : Icons.visibility,
                         color: AppStyles.primaryColor,
+=======
+                    prefixIcon: Icon(Icons.lock, color: theme.colorScheme.primary),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                        color: theme.colorScheme.primary,
+>>>>>>> b11e7d7 (first commit)
                       ),
                       onPressed: () {
                         setState(() {
@@ -153,7 +212,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         });
                       },
                     ),
+<<<<<<< HEAD
                   ),
+=======
+                  ).applyDefaults(theme.inputDecorationTheme),
+>>>>>>> b11e7d7 (first commit)
                   obscureText: _obscurePassword,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -167,16 +230,28 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: AppStyles.defaultPadding),
 
+<<<<<<< HEAD
                 // Confirm Password Field
+=======
+                // Confirm Password
+>>>>>>> b11e7d7 (first commit)
                 TextFormField(
                   controller: _confirmPasswordController,
                   decoration: InputDecoration(
                     hintText: AppConstants.confirmPasswordHint,
+<<<<<<< HEAD
                     prefixIcon: const Icon(Icons.lock_reset, color: AppStyles.primaryColor),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
                         color: AppStyles.primaryColor,
+=======
+                    prefixIcon: Icon(Icons.lock_reset, color: theme.colorScheme.primary),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
+                        color: theme.colorScheme.primary,
+>>>>>>> b11e7d7 (first commit)
                       ),
                       onPressed: () {
                         setState(() {
@@ -184,7 +259,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         });
                       },
                     ),
+<<<<<<< HEAD
                   ),
+=======
+                  ).applyDefaults(theme.inputDecorationTheme),
+>>>>>>> b11e7d7 (first commit)
                   obscureText: _obscureConfirmPassword,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -199,14 +278,29 @@ class _SignupScreenState extends State<SignupScreen> {
                 const SizedBox(height: AppStyles.largePadding),
 
                 authProvider.isLoading
+<<<<<<< HEAD
                     ? const Center(
                   child: CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(AppStyles.primaryColor),
+=======
+                    ? Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      theme.colorScheme.primary,
+                    ),
+>>>>>>> b11e7d7 (first commit)
                   ),
                 )
                     : ElevatedButton(
                   onPressed: _signup,
+<<<<<<< HEAD
                   child: const Text(AppConstants.signupButtonText),
+=======
+                  child: Text(
+                    AppConstants.signupButtonText,
+                    style: AppStyles.buttonTextStyle(context),
+                  ),
+>>>>>>> b11e7d7 (first commit)
                 ),
                 const SizedBox(height: AppStyles.largePadding),
 
@@ -215,7 +309,11 @@ class _SignupScreenState extends State<SignupScreen> {
                   children: [
                     Text(
                       AppConstants.alreadyAccountText,
+<<<<<<< HEAD
                       style: AppStyles.bodyTextStyle,
+=======
+                      style: AppStyles.bodyTextStyle(context),
+>>>>>>> b11e7d7 (first commit)
                     ),
                     TextButton(
                       onPressed: () {
@@ -225,7 +323,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                       child: Text(
                         AppConstants.loginButtonText,
+<<<<<<< HEAD
                         style: AppStyles.linkTextStyle,
+=======
+                        style: AppStyles.linkTextStyle(context),
+>>>>>>> b11e7d7 (first commit)
                       ),
                     ),
                   ],
@@ -237,4 +339,8 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
     );
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b11e7d7 (first commit)

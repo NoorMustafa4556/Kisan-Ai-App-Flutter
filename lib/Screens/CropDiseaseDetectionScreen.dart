@@ -1,15 +1,26 @@
 // lib/Screens/CropDiseaseDetectionScreen.dart
+<<<<<<< HEAD
+=======
+
+>>>>>>> b11e7d7 (first commit)
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
+<<<<<<< HEAD
+=======
+
+>>>>>>> b11e7d7 (first commit)
 import '../Utils/AppConstants.dart';
 import '../Utils/AppStyles.dart';
 import '../Utils/ChatLanguages.dart';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b11e7d7 (first commit)
 class CropDiseaseDetectionScreen extends StatefulWidget {
   const CropDiseaseDetectionScreen({super.key});
 
@@ -22,6 +33,7 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
   String _predictionResult = "";
   bool _isLoading = false;
 
+<<<<<<< HEAD
   // --- Language Selection State ---
   ChatLanguage _selectedLanguage = ChatLanguage.english; // Default language
 
@@ -31,6 +43,12 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
   // For now, we'll assume we either get localized names from the disease API,
   // or we use a local mapping/external translation service.
   // For this example, we'll use a simple hardcoded map for demonstration.
+=======
+  ChatLanguage _selectedLanguage = ChatLanguage.english;
+
+  final String _apiUrl = 'https://mhamzashahid-crop-disease-detector-api.hf.space/api/predict';
+
+>>>>>>> b11e7d7 (first commit)
   final Map<String, Map<ChatLanguage, String>> _diseaseTranslations = {
     "Healthy": {
       ChatLanguage.english: "Healthy",
@@ -47,8 +65,11 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
       ChatLanguage.urdu: "پتوں پر دھبے",
       ChatLanguage.romanUrdu: "Patton par Dhabbe",
     },
+<<<<<<< HEAD
     // Add more disease translations here as needed
     // Example for a more complex name:
+=======
+>>>>>>> b11e7d7 (first commit)
     "Tomato mosaic virus": {
       ChatLanguage.english: "Tomato mosaic virus",
       ChatLanguage.urdu: "ٹماٹر موزیک وائرس",
@@ -59,28 +80,45 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
       ChatLanguage.urdu: "سفید پھپھوندی",
       ChatLanguage.romanUrdu: "Safed Phaphundi",
     },
+<<<<<<< HEAD
     // Add other potential disease names from your model here
     // If a disease is not found in this map, it will default to English.
   };
 
 
+=======
+  };
+
+>>>>>>> b11e7d7 (first commit)
   Future<void> _pickImage(ImageSource source) async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: source);
     if (pickedFile != null) {
       setState(() {
         _selectedImage = File(pickedFile.path);
+<<<<<<< HEAD
         _predictionResult = ""; // Clear previous prediction
       });
       Fluttertoast.showToast(msg: "Image selected!");
     } else {
       Fluttertoast.showToast(msg: "No image selected.", backgroundColor: AppStyles.errorColor);
+=======
+        _predictionResult = "";
+      });
+      Fluttertoast.showToast(msg: "Image selected!");
+    } else {
+      Fluttertoast.showToast(
+        msg: "No image selected.",
+        backgroundColor: Theme.of(context).colorScheme.error,
+      );
+>>>>>>> b11e7d7 (first commit)
     }
   }
 
   void _showImageSourceOptions() {
     showModalBottomSheet(
       context: context,
+<<<<<<< HEAD
       builder: (BuildContext bc) {
         return SafeArea(
           child: Wrap(
@@ -115,11 +153,47 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
     }
     // Fallback to English if translation not found
     return englishName;
+=======
+      builder: (bc) => SafeArea(
+        child: Wrap(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.photo_library),
+              title: const Text('Photo Gallery'),
+              onTap: () {
+                _pickImage(ImageSource.gallery);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: const Text('Camera'),
+              onTap: () {
+                _pickImage(ImageSource.camera);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  String _getTranslatedDiseaseName(String englishName, ChatLanguage language) {
+    return _diseaseTranslations[englishName]?[language] ?? englishName;
+>>>>>>> b11e7d7 (first commit)
   }
 
   Future<void> _detectDisease() async {
     if (_selectedImage == null) {
+<<<<<<< HEAD
       Fluttertoast.showToast(msg: "Please select an image first.", backgroundColor: AppStyles.errorColor);
+=======
+      Fluttertoast.showToast(
+        msg: "Please select an image first.",
+        backgroundColor: Theme.of(context).colorScheme.error,
+      );
+>>>>>>> b11e7d7 (first commit)
       return;
     }
 
@@ -131,11 +205,15 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
     try {
       var request = http.MultipartRequest('POST', Uri.parse(_apiUrl));
       request.files.add(await http.MultipartFile.fromPath('file', _selectedImage!.path));
+<<<<<<< HEAD
 
+=======
+>>>>>>> b11e7d7 (first commit)
       final response = await request.send();
 
       if (response.statusCode == 200) {
         final respStr = await response.stream.bytesToString();
+<<<<<<< HEAD
         final Map<String, dynamic> responseData = jsonDecode(respStr);
 
         if (responseData['success'] == true && responseData['result'] != null) {
@@ -148,17 +226,36 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
 
           String confidenceText;
           // Translate confidence text as well
+=======
+        final data = jsonDecode(respStr);
+
+        if (data['success'] == true && data['result'] != null) {
+          final result = data['result'];
+          final englishDisease = result['predicted_disease'];
+          final confidence = result['confidence'];
+
+          final translatedDisease = _getTranslatedDiseaseName(englishDisease, _selectedLanguage);
+
+          String confidenceText;
+>>>>>>> b11e7d7 (first commit)
           switch (_selectedLanguage) {
             case ChatLanguage.urdu:
               confidenceText = " (اعتماد: ${(confidence * 100).toStringAsFixed(2)}%)";
               break;
             case ChatLanguage.romanUrdu:
+<<<<<<< HEAD
               confidenceText = " (Confidence: ${(confidence * 100).toStringAsFixed(2)}%)"; // Roman Urdu often uses English terms or a mix
+=======
+              confidenceText = " (Confidence: ${(confidence * 100).toStringAsFixed(2)}%)";
+>>>>>>> b11e7d7 (first commit)
               break;
             case ChatLanguage.english:
             default:
               confidenceText = " (Confidence: ${(confidence * 100).toStringAsFixed(2)}%)";
+<<<<<<< HEAD
               break;
+=======
+>>>>>>> b11e7d7 (first commit)
           }
 
           setState(() {
@@ -167,6 +264,7 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
           Fluttertoast.showToast(msg: "Prediction received!");
         } else {
           setState(() {
+<<<<<<< HEAD
             _predictionResult = "No prediction data found: ${responseData['error'] ?? 'Unknown error'}";
           });
           Fluttertoast.showToast(msg: "API response error: No data.", backgroundColor: AppStyles.errorColor);
@@ -177,12 +275,28 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
           _predictionResult = "Error: ${response.statusCode}\n$errorBody";
         });
         Fluttertoast.showToast(msg: "API request failed: ${response.statusCode}", backgroundColor: AppStyles.errorColor);
+=======
+            _predictionResult = "Error: ${data['error'] ?? 'No data'}";
+          });
+          Fluttertoast.showToast(msg: "API error.", backgroundColor: Theme.of(context).colorScheme.error);
+        }
+      } else {
+        final error = await response.stream.bytesToString();
+        setState(() {
+          _predictionResult = "Error: ${response.statusCode}\n$error";
+        });
+        Fluttertoast.showToast(msg: "Failed: ${response.statusCode}", backgroundColor: Theme.of(context).colorScheme.error);
+>>>>>>> b11e7d7 (first commit)
       }
     } catch (e) {
       setState(() {
         _predictionResult = "Error: $e";
       });
+<<<<<<< HEAD
       Fluttertoast.showToast(msg: "An error occurred: $e", backgroundColor: AppStyles.errorColor);
+=======
+      Fluttertoast.showToast(msg: "Error: $e", backgroundColor: Theme.of(context).colorScheme.error);
+>>>>>>> b11e7d7 (first commit)
     } finally {
       setState(() {
         _isLoading = false;
@@ -192,6 +306,7 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return Scaffold(
       appBar: AppBar(
         title: Text(AppConstants.cropDiseaseDetection),
@@ -203,17 +318,42 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               // --- Language Selector Dropdown ---
+=======
+    final theme = Theme.of(context);
+    final isRtl = _selectedLanguage == ChatLanguage.urdu;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(AppConstants.cropDiseaseDetection),
+        backgroundColor: theme.colorScheme.primary,
+        foregroundColor: theme.appBarTheme.foregroundColor,
+      ),
+      body: Directionality(
+        textDirection: isRtl ? TextDirection.rtl : TextDirection.ltr,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(AppStyles.defaultPadding),
+          child: Column(
+            children: [
+              // Language Dropdown
+>>>>>>> b11e7d7 (first commit)
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: AppStyles.defaultPadding),
                 margin: const EdgeInsets.only(bottom: AppStyles.defaultPadding),
                 decoration: BoxDecoration(
+<<<<<<< HEAD
                   color: AppStyles.backgroundColor,
                   borderRadius: BorderRadius.circular(AppStyles.defaultBorderRadius),
                   border: Border.all(color: AppStyles.primaryColor, width: 1),
+=======
+                  color: theme.scaffoldBackgroundColor,
+                  borderRadius: BorderRadius.circular(AppStyles.defaultBorderRadius),
+                  border: Border.all(color: theme.colorScheme.primary, width: 1),
+>>>>>>> b11e7d7 (first commit)
                 ),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<ChatLanguage>(
                     value: _selectedLanguage,
+<<<<<<< HEAD
                     icon: const Icon(Icons.arrow_drop_down, color: AppStyles.primaryColor),
                     elevation: 16,
                     style: AppStyles.bodyTextStyle.copyWith(color: AppStyles.textColor),
@@ -233,6 +373,20 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
                       return DropdownMenuItem<ChatLanguage>(
                         value: language,
                         child: Text(language.toDisplayString()),
+=======
+                    icon: Icon(Icons.arrow_drop_down, color: theme.colorScheme.primary),
+                    style: AppStyles.bodyTextStyle(context),
+                    onChanged: (val) {
+                      setState(() {
+                        _selectedLanguage = val!;
+                        _predictionResult = ""; // Clear for fresh translation
+                      });
+                    },
+                    items: ChatLanguage.values.map((lang) {
+                      return DropdownMenuItem(
+                        value: lang,
+                        child: Text(lang.toDisplayString()),
+>>>>>>> b11e7d7 (first commit)
                       );
                     }).toList(),
                   ),
@@ -240,11 +394,16 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
               ),
               const SizedBox(height: AppStyles.defaultPadding),
 
+<<<<<<< HEAD
+=======
+              // Image Placeholder
+>>>>>>> b11e7d7 (first commit)
               _selectedImage == null
                   ? Container(
                 width: 200,
                 height: 200,
                 decoration: BoxDecoration(
+<<<<<<< HEAD
                   color: AppStyles.backgroundColor,
                   border: Border.all(color: AppStyles.primaryColor, width: 2),
                   borderRadius: BorderRadius.circular(AppStyles.defaultBorderRadius),
@@ -262,11 +421,28 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: AppStyles.largePadding),
+=======
+                  color: theme.cardColor,
+                  border: Border.all(color: theme.colorScheme.primary, width: 2),
+                  borderRadius: BorderRadius.circular(AppStyles.defaultBorderRadius),
+                ),
+                child: Icon(Icons.image, size: 100, color: theme.colorScheme.primary),
+              )
+                  : ClipRRect(
+                borderRadius: BorderRadius.circular(AppStyles.defaultBorderRadius),
+                child: Image.file(_selectedImage!, width: 200, height: 200, fit: BoxFit.cover),
+              ),
+
+              const SizedBox(height: AppStyles.largePadding),
+
+              // Pick Image Button
+>>>>>>> b11e7d7 (first commit)
               ElevatedButton.icon(
                 onPressed: _showImageSourceOptions,
                 icon: const Icon(Icons.add_photo_alternate),
                 label: const Text("Pick Image"),
                 style: ElevatedButton.styleFrom(
+<<<<<<< HEAD
                   backgroundColor: AppStyles.primaryColor,
                   foregroundColor: AppStyles.whiteColor,
                   padding: const EdgeInsets.symmetric(horizontal: AppStyles.largePadding, vertical: AppStyles.defaultPadding),
@@ -294,23 +470,70 @@ class _CropDiseaseDetectionScreenState extends State<CropDiseaseDetectionScreen>
                     color: AppStyles.primaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(AppStyles.defaultBorderRadius),
                     border: Border.all(color: AppStyles.primaryColor),
+=======
+                  backgroundColor: theme.colorScheme.primary,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: AppStyles.largePadding, vertical: AppStyles.defaultPadding),
+                ),
+              ),
+
+              const SizedBox(height: AppStyles.defaultPadding),
+
+              // Detect Button
+              if (_selectedImage != null)
+                ElevatedButton.icon(
+                  onPressed: _isLoading ? null : _detectDisease,
+                  icon: _isLoading
+                      ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+                      : const Icon(Icons.search),
+                  label: Text(_isLoading ? "Detecting..." : "Detect Disease"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: theme.colorScheme.secondary,
+                    foregroundColor: theme.colorScheme.onSecondary,
+                    padding: const EdgeInsets.symmetric(horizontal: AppStyles.largePadding, vertical: AppStyles.defaultPadding),
+                  ),
+                ),
+
+              const SizedBox(height: AppStyles.largePadding),
+
+              // Result Box
+              if (_predictionResult.isNotEmpty)
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(AppStyles.defaultPadding),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primary.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(AppStyles.defaultBorderRadius),
+                    border: Border.all(color: theme.colorScheme.primary),
+>>>>>>> b11e7d7 (first commit)
                   ),
                   child: Column(
                     children: [
                       Text(
+<<<<<<< HEAD
                         // Translate "Prediction:" as well
                         _selectedLanguage == ChatLanguage.urdu ? "پیش گوئی:" : (_selectedLanguage == ChatLanguage.romanUrdu ? "Prediction:" : "Prediction:"),
                         style: AppStyles.headingTextStyle.copyWith(color: AppStyles.primaryColor),
                         // Add text direction for Urdu
                         textDirection: _selectedLanguage == ChatLanguage.urdu ? TextDirection.rtl : TextDirection.ltr,
+=======
+                        _selectedLanguage == ChatLanguage.urdu
+                            ? "پیش گوئی:"
+                            : (_selectedLanguage == ChatLanguage.romanUrdu ? "Prediction:" : "Prediction:"),
+                        style: AppStyles.headingTextStyle(context).copyWith(color: theme.colorScheme.primary),
+>>>>>>> b11e7d7 (first commit)
                       ),
                       const SizedBox(height: AppStyles.smallPadding),
                       Text(
                         _predictionResult,
                         textAlign: TextAlign.center,
+<<<<<<< HEAD
                         style: AppStyles.bodyTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
                         // Add text direction for Urdu
                         textDirection: _selectedLanguage == ChatLanguage.urdu ? TextDirection.rtl : TextDirection.ltr,
+=======
+                        style: AppStyles.bodyTextStyle(context).copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+>>>>>>> b11e7d7 (first commit)
                       ),
                     ],
                   ),
