@@ -99,6 +99,7 @@ flutter pub get
 flutter run
 ```
 ##  📁 Folder Structure
+```bash
 lib/
 ├── Screens/
 │   ├── HomeScreen.dart
@@ -118,3 +119,4 @@ lib/
 │   ├── CustomButton.dart
 │   └── InfoCard.dart
 └── main.dart
+```
