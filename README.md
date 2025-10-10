@@ -80,20 +80,25 @@ Follow these steps to run the project locally.
 
 ### Setup Steps
 
+
+## Clone this repository
 ```bash
-# Clone this repository
 git clone https://github.com/NoorMustafa4556/Kisan-Ai-App-Flutter.git
-
-# Navigate into project folder
+```
+## Navigate into project folder
+```bash
 cd Kisan-Ai-App-Flutter
+```
 
-# Get dependencies
+## Get dependencies
+```bash
 flutter pub get
-
-# Run the app
+```
+## Run the app
+```bash
 flutter run
-
-📁 Folder Structure
+```
+##  📁 Folder Structure
 lib/
 ├── Screens/
 │   ├── HomeScreen.dart
