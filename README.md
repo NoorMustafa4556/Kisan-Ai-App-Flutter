@@ -92,3 +92,24 @@ flutter pub get
 
 # Run the app
 flutter run
+
+📁 Folder Structure
+lib/
+├── Screens/
+│   ├── HomeScreen.dart
+│   ├── WeatherScreen.dart
+│   ├── CropDetectionScreen.dart
+│   ├── MarketScreen.dart
+│   └── ProfileScreen.dart
+├── Models/
+│   ├── CropModel.dart
+│   ├── WeatherModel.dart
+│   └── MarketModel.dart
+├── Services/
+│   ├── ApiService.dart
+│   ├── FirebaseService.dart
+│   └── AiModelService.dart
+├── Widgets/
+│   ├── CustomButton.dart
+│   └── InfoCard.dart
+└── main.dart
