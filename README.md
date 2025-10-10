@@ -101,22 +101,38 @@ flutter run
 ##  📁 Folder Structure
 ```bash
 lib/
-├── Screens/
-│   ├── HomeScreen.dart
-│   ├── WeatherScreen.dart
-│   ├── CropDetectionScreen.dart
-│   ├── MarketScreen.dart
-│   └── ProfileScreen.dart
 ├── Models/
-│   ├── CropModel.dart
-│   ├── WeatherModel.dart
-│   └── MarketModel.dart
+│ └── UserModel.dart
+│
+├── Providers/
+│ ├── AuthProvider.dart
+│ └── ThemeProvider.dart
+│
+├── Screens/
+│ ├── Auth/
+│ │ ├── LoginScreen.dart
+│ │ └── SignUpScreen.dart
+│ ├── Chat/
+│ ├── ContactUsScreen.dart
+│ ├── CropDiseaseDetectionScreen.dart
+│ ├── CropYieldPredictor.dart
+│ ├── FertilizerRecommendationScreen.dart
+│ ├── HomeScreen.dart
+│ ├── MarketPriceScreen.dart
+│ ├── SettingsScreen.dart
+│ ├── SplashScreen.dart
+│ ├── ThemeSelectionScreen.dart
+│ └── WeatherScreen.dart
+│
 ├── Services/
-│   ├── ApiService.dart
-│   ├── FirebaseService.dart
-│   └── AiModelService.dart
-├── Widgets/
-│   ├── CustomButton.dart
-│   └── InfoCard.dart
+│ ├── Auth/
+│ │ └── AuthService.dart
+│
+├── Utils/
+│ ├── AppConstants.dart
+│ ├── AppStyles.dart
+│ └── ChatLanguages.dart
+│
+├── firebase_options.dart
 └── main.dart
 ```
