@@ -5,6 +5,30 @@ A **smart AI-powered agricultural assistant** built using **Flutter**, designed 
 This project aims to **bridge technology and agriculture**, empowering farmers with intelligent tools for **sustainable farming**, **resource management**, and **yield improvement**.
 
 ---
+## 🌟 Description
+
+Kisan AI App is an innovative, AI-powered agricultural companion designed to empower farmers with intelligent insights and real-time decision support. Built using Flutter, this app harnesses the power of Artificial Intelligence (AI), Machine Learning (ML), and Data Analytics to simplify farming operations and improve crop productivity.
+
+Through a unified and user-friendly interface, farmers can access personalized crop recommendations, AI-based disease detection, fertilizer guidance, and real-time weather forecasts — all tailored to their local environment. The app also integrates market rate tracking to help farmers make informed financial decisions, ensuring that technology directly supports their daily livelihood.
+
+Designed with a strong emphasis on clean architecture and scalable development, the Kisan AI App follows the principle of Separation of Concerns, making the codebase modular, maintainable, and ready for future enhancements. Its offline-first architecture ensures uninterrupted usability in rural or low-connectivity regions, while Firebase integration provides secure authentication and real-time cloud synchronization.
+
+By combining AI-driven insights with modern mobile technology, this app serves as a bridge between traditional farming practices and the digital future — empowering farmers to make smarter, data-backed decisions and achieve higher yields with fewer resources. 🌾📱
+
+---
+
+## ✨ Key Features
+
+- 🌾 **AI Crop Recommendations:** Get smart suggestions based on soil, weather, and location.
+- 🌤️ **Weather Forecasting:** View real-time and weekly forecasts for planning farm activities.
+- 🦠 **Disease Detection:** Identify crop diseases via image-based AI prediction.
+- 💹 **Market Price Insights:** Stay updated on crop market rates to make profitable decisions.
+- 🛰️ **Offline Support:** Works seamlessly in low-connectivity regions.
+- 💬 **Multilingual Support:** Available in multiple languages for accessibility.
+- 🧠 **Data-Driven Insights:** Utilizes AI/ML models for personalized advice.
+- 🔒 **Secure & Private:** Data is securely handled with Firebase integration.
+
+---
 
 ## 📱 App Screenshots
 
@@ -33,26 +57,7 @@ This project aims to **bridge technology and agriculture**, empowering farmers w
 
 ---
 
-## 🌟 Description
 
-**Kisan AI App** is a modern, intelligent farming assistant that leverages **AI and data-driven insights** to improve agricultural productivity. Farmers can receive crop suggestions, disease identification, and weather alerts while tracking local market rates — all within a single intuitive Flutter interface.
-
-The app is designed for **offline-first usability**, **clean architecture**, and **scalable performance**, ensuring accessibility even in rural areas with limited connectivity.
-
----
-
-## ✨ Key Features
-
-- 🌾 **AI Crop Recommendations:** Get smart suggestions based on soil, weather, and location.
-- 🌤️ **Weather Forecasting:** View real-time and weekly forecasts for planning farm activities.
-- 🦠 **Disease Detection:** Identify crop diseases via image-based AI prediction.
-- 💹 **Market Price Insights:** Stay updated on crop market rates to make profitable decisions.
-- 🛰️ **Offline Support:** Works seamlessly in low-connectivity regions.
-- 💬 **Multilingual Support:** Available in multiple languages for accessibility.
-- 🧠 **Data-Driven Insights:** Utilizes AI/ML models for personalized advice.
-- 🔒 **Secure & Private:** Data is securely handled with Firebase integration.
-
----
 
 ## 🛠️ Tech Stack
 
