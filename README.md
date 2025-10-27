@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 🌾 Kisan AI App (Flutter)
 
 A **smart AI-powered agricultural assistant** built using **Flutter**, designed to help farmers make informed decisions through real-time insights. The app integrates **AI/ML**, **weather APIs**, and **data analytics** to provide features like **crop recommendations**, **disease detection**, **weather forecasts**, and **market trends** — all in one user-friendly mobile platform.
@@ -54,6 +54,16 @@ By combining AI-driven insights with modern mobile technology, this app serves a
   <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/18.png" width="30%"/>
   <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/19.png" width="30%"/>
   <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/20.png" width="30%"/>
+  <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/21.png" width="30%"/>
+  <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/22.png" width="30%"/>
+  <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/23.png" width="30%"/>
+  <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/24.png" width="30%"/>
+  <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/25.png" width="30%"/>
+  <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/26.png" width="30%"/>
+  <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/27.png" width="30%"/>
+  <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/28.png" width="30%"/>
+  <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/29.png" width="30%"/>
+  <img src="https://raw.githubusercontent.com/NoorMustafa4556/Kisan-Ai-App-Flutter/main/assets/images/30.png" width="30%"/>
 </p>
 
 ---
