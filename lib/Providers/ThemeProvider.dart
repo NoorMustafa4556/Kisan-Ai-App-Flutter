@@ -4,11 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider with ChangeNotifier {
-<<<<<<< HEAD
   ThemeMode _themeMode = ThemeMode.system; // Default system theme
-=======
-  ThemeMode _themeMode = ThemeMode.system;
->>>>>>> b11e7d7 (first commit)
   static const String _themeModeKey = 'themeMode';
 
   ThemeProvider() {
@@ -17,9 +13,6 @@ class ThemeProvider with ChangeNotifier {
 
   ThemeMode get themeMode => _themeMode;
 
-<<<<<<< HEAD
-  // Set theme mode and save to SharedPreferences
-=======
   // Light Theme
   ThemeData get lightTheme => ThemeData(
     brightness: Brightness.light,
@@ -41,7 +34,8 @@ class ThemeProvider with ChangeNotifier {
     textTheme: const TextTheme(
       bodyLarge: TextStyle(color: Colors.black87),
       bodyMedium: TextStyle(color: Colors.black54),
-      headlineMedium: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      headlineMedium:
+      TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -83,7 +77,8 @@ class ThemeProvider with ChangeNotifier {
     textTheme: const TextTheme(
       bodyLarge: TextStyle(color: Colors.white70),
       bodyMedium: TextStyle(color: Colors.white60),
-      headlineMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      headlineMedium:
+      TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -111,8 +106,7 @@ class ThemeProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  // Set theme mode (Light/Dark/System)
->>>>>>> b11e7d7 (first commit)
+  // Set theme mode and save to SharedPreferences
   void setThemeMode(ThemeMode mode) {
     if (_themeMode != mode) {
       _themeMode = mode;
@@ -121,18 +115,11 @@ class ThemeProvider with ChangeNotifier {
     }
   }
 
-<<<<<<< HEAD
   // Load theme mode from SharedPreferences
   Future<void> _loadThemeMode() async {
     final prefs = await SharedPreferences.getInstance();
     final String? themeModeString = prefs.getString(_themeModeKey);
 
-=======
-  // Load from SharedPreferences
-  Future<void> _loadThemeMode() async {
-    final prefs = await SharedPreferences.getInstance();
-    final String? themeModeString = prefs.getString(_themeModeKey);
->>>>>>> b11e7d7 (first commit)
     if (themeModeString != null) {
       _themeMode = ThemeMode.values.firstWhere(
             (e) => e.toString() == 'ThemeMode.$themeModeString',
@@ -142,11 +129,7 @@ class ThemeProvider with ChangeNotifier {
     notifyListeners();
   }
 
-<<<<<<< HEAD
   // Save theme mode to SharedPreferences
-=======
-  // Save to SharedPreferences
->>>>>>> b11e7d7 (first commit)
   Future<void> _saveThemeMode(ThemeMode mode) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_themeModeKey, mode.name);

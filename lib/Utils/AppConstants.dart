@@ -35,7 +35,7 @@ class AppConstants {
   // Home Screen
   static const String ourServices = "Our Services";
   static const String cropDiseaseDetection = "Crop Disease Detection";
-  static const String CropYieldForcaster = "Crop Yield Forecaster";
+  static const String CropYieldForcaster = "Country Yield Forecaster";
 
   static const String weatherForecasting = "Weather Forecasting";
 

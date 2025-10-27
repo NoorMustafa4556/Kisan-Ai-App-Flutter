@@ -261,7 +261,7 @@ class _CropYeildPridictorState extends State<CropYeildPridictor> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                "Enter Crop Prediction Parameters",
+                "Enter Crop Prediction Features",
                 style: AppStyles.headingTextStyle(context)
                     .copyWith(color: AppStyles.primaryColor),
                 textAlign: TextAlign.center,

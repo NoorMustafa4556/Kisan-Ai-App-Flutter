@@ -217,7 +217,7 @@ class _DistrictYieldForecastingScreenState
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                "Enter District Forecast Parameters",
+                "Enter District Forecast Features",
                 style: AppStyles.headingTextStyle(context)
                     .copyWith(color: AppStyles.primaryColor), // ✅ replaced
                 textAlign: TextAlign.center,
