@@ -1,7 +1,6 @@
-// lib/Services/Auth/AuthService.dart
 
-import 'package:firebase_auth/firebase_auth.dart'; // Firebase Authentication ke liye
-import 'package:cloud_firestore/cloud_firestore.dart'; // Firestore database ke liye
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../Models/UserModel.dart';
 
@@ -9,12 +8,10 @@ class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance; // FirebaseAuth instance
   final FirebaseFirestore _firestore = FirebaseFirestore.instance; // FirebaseFirestore instance
 
-  // Public getters for FirebaseAuth and FirebaseFirestore instances
-  // AuthProvider inko use karega user session check karne ke liye
   FirebaseAuth get firebaseAuth => _firebaseAuth;
   FirebaseFirestore get firestore => _firestore;
 
-  // User ko email aur password se sign in karwana
+  // User sign in With email & password
   Future<UserModel> signInWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential userCredential = await _firebaseAuth.signInWithEmailAndPassword(
@@ -24,20 +21,19 @@ class AuthService {
       User? firebaseUser = userCredential.user;
 
       if (firebaseUser != null) {
-        // User login hone ke baad, uski details Firestore se fetch karein
+        // Fetch Details After User Login
         DocumentSnapshot doc = await _firestore.collection('users').doc(firebaseUser.uid).get();
         if (doc.exists) {
           return UserModel.fromJson(doc.data() as Map<String, dynamic>);
         } else {
-          // Agar Firestore mein user ka data nahi mila (unlikely for existing users if signup created it)
-          // To basic UserModel return karein. Ya error throw karein agar data mandatory hai.
+
           return UserModel(uid: firebaseUser.uid, email: firebaseUser.email ?? 'No Email');
         }
       } else {
         throw Exception('User is null after sign in.');
       }
     } on FirebaseAuthException catch (e) {
-      // Firebase specific errors ko handle karein
+      // Firebase specific errors  handle
       if (e.code == 'user-not-found') {
         throw Exception('No user found for that email.');
       } else if (e.code == 'wrong-password') {
@@ -69,7 +65,7 @@ class AuthService {
           profileImageUrl: null, // Initially null
         );
 
-        // Firestore mein 'users' collection mein user ka data add karein
+
         await _firestore.collection('users').doc(firebaseUser.uid).set(newUser.toJson());
 
         return newUser;
@@ -77,7 +73,7 @@ class AuthService {
         throw Exception('User is null after sign up.');
       }
     } on FirebaseAuthException catch (e) {
-      // Firebase specific errors ko handle karein
+      // Firebase specific errors  handle
       if (e.code == 'weak-password') {
         throw Exception('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
@@ -86,12 +82,12 @@ class AuthService {
         throw Exception('Signup failed: ${e.message}');
       }
     } catch (e) {
-      // General errors ko handle karein
+      // General errors  handle
       throw Exception('Signup failed: ${e.toString()}');
     }
   }
 
-  // User ko sign out karwana
+  // User sign out
   Future<void> signOut() async {
     try {
       await _firebaseAuth.signOut();

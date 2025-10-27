@@ -1,4 +1,3 @@
-// lib/Utils/AppConstants.dart - COMPLETE UPDATED CODE
 
 class AppConstants {
   static const String appName = "Kisan AI Advisor";
@@ -37,14 +36,14 @@ class AppConstants {
   static const String ourServices = "Our Services";
   static const String cropDiseaseDetection = "Crop Disease Detection";
   static const String CropYieldForcaster = "Crop Yield Forecaster";
-  static const String fertilizerRecommendation = "Fertilizer Recommendation"; // Yeh ab use nahi hoga agar card remove kar diye
-  static const String weatherForecasting = "Weather Forecasting";
-  static const String marketPricePrediction = "Market Price Prediction"; // Yeh ab use nahi hoga agar card remove kar diye
-  static const String kisanAIChat = "Kisan AI Chat"; // Chat screen ka title
 
-  // NEW: Constants for the new cards
-  static const String chatWithKisanAI = "Chat With Kisan AI"; // For the new Chat card title
-  static const String contactUs = "Contact Us"; // For the new Contact Us card title
+  static const String weatherForecasting = "Weather Forecasting";
+
+  static const String kisanAIChat = "Kisan AI Chat";
+
+
+  static const String chatWithKisanAI = "Chat With Kisan AI";
+  static const String contactUs = "Contact Us";
 
 
   // Settings Screen

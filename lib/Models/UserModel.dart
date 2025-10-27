@@ -3,8 +3,8 @@
 class UserModel {
   final String uid;
   final String email;
-  final String? fullName; // Full name optional ho sakta hai
-  final String? profileImageUrl; // Profile picture ka URL
+  final String? fullName;
+  final String? profileImageUrl;
 
   UserModel({
     required this.uid,
@@ -13,7 +13,7 @@ class UserModel {
     this.profileImageUrl,
   });
 
-  // Factory constructor to create a UserModel from a JSON map (e.g., from Firestore)
+  // Factory constructor to create a UserModel from a JSON map
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       uid: json['uid'] as String,
@@ -23,7 +23,7 @@ class UserModel {
     );
   }
 
-  // Method to convert UserModel to a JSON map (e.g., for Firestore)
+  // Method to convert UserModel to a JSON map
   Map<String, dynamic> toJson() {
     return {
       'uid': uid,

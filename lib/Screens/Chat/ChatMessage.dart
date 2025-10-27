@@ -1,7 +1,6 @@
 // lib/screens/chat/chat_message.dart
 import 'package:flutter/material.dart';
 
-// This is a simple data model for a chat message
 class ChatMessage {
   final String text;
   final bool isUserMessage;
@@ -10,11 +9,11 @@ class ChatMessage {
   ChatMessage({
     required this.text,
     required this.isUserMessage,
-    DateTime? timestamp, // Optional, will default to now
+    DateTime? timestamp,
   }) : timestamp = timestamp ?? DateTime.now();
 }
 
-// This is the UI widget for displaying a single chat message
+
 class ChatBubble extends StatelessWidget {
   final String text;
   final bool isUserMessage;

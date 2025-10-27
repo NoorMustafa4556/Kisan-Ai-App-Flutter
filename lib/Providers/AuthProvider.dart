@@ -1,12 +1,12 @@
 // lib/Providers/AuthProvider.dart
 
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // DocumentSnapshot ke liye
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../Models/UserModel.dart';
-import '../Services/Auth/AuthService.dart'; // AuthService ko import karein
+import '../Services/Auth/AuthService.dart';
 
 class AuthProvider with ChangeNotifier {
-  final AuthService _authService = AuthService(); // AuthService ka instance banayein
+  final AuthService _authService = AuthService();
 
   UserModel? _user;
   bool _isLoading = false;
@@ -16,10 +16,10 @@ class AuthProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
 
-  // Login method ko update karein takay AuthService use kare
+
   Future<void> login(String email, String password) async {
     _isLoading = true;
-    _errorMessage = null; // Purana error message clear karein
+    _errorMessage = null;
     notifyListeners();
 
     try {
@@ -28,17 +28,16 @@ class AuthProvider with ChangeNotifier {
     } catch (e) {
       _errorMessage = 'Login failed: ${e.toString()}';
       print("AuthProvider: Login failed: $e");
-      _user = null; // Agar login fail ho to user ko null set karein
+      _user = null;
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
 
-  // Signup method ko update karein takay AuthService use kare
   Future<void> signup(String fullName, String email, String password) async {
     _isLoading = true;
-    _errorMessage = null; // Purana error message clear karein
+    _errorMessage = null;
     notifyListeners();
 
     try {
@@ -47,14 +46,14 @@ class AuthProvider with ChangeNotifier {
     } catch (e) {
       _errorMessage = 'Signup failed: ${e.toString()}';
       print("AuthProvider: Signup failed: $e");
-      _user = null; // Agar signup fail ho to user ko null set karein
+      _user = null;
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
 
-  // Logout method ko update karein takay AuthService use kare
+  // Logout method
   Future<void> logout() async {
     _isLoading = true;
     _errorMessage = null;
@@ -62,7 +61,7 @@ class AuthProvider with ChangeNotifier {
 
     try {
       await _authService.signOut();
-      _user = null; // User ko null karein
+      _user = null;
       print("AuthProvider: User logged out.");
     } catch (e) {
       _errorMessage = 'Logout failed: ${e.toString()}';
@@ -73,26 +72,26 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  // User session check method ko update karein takay AuthService ke getters use kare
+  // User session check method
   Future<void> checkUserSession() async {
     _isLoading = true;
     notifyListeners();
 
     try {
-      // AuthService ke public getters ko use kar ke current Firebase user check karein
+
       if (_authService.firebaseAuth.currentUser != null) {
         String uid = _authService.firebaseAuth.currentUser!.uid;
-        // AuthService ke public getter 'firestore' ko use kar ke user ka data fetch karein
+
         DocumentSnapshot doc = await _authService.firestore.collection('users').doc(uid).get();
         if (doc.exists) {
           _user = UserModel.fromJson(doc.data() as Map<String, dynamic>);
           print("AuthProvider: User session found for: ${_user?.email}");
         } else {
-          _user = null; // Firestore data missing hai, user session nahi mana jayega ya basic user
+          _user = null;
           print("AuthProvider: User session found, but Firestore data missing.");
         }
       } else {
-        _user = null; // Koi user logged in nahi
+        _user = null;
         print("AuthProvider: No active user session.");
       }
     } catch (e) {
@@ -104,7 +103,7 @@ class AuthProvider with ChangeNotifier {
       notifyListeners();
     }
   }
-  // Naya method user profile ko update karne ke liye
+
   void updateUserProfile({String? fullName, String? email, String? profileImageUrl}) {
     if (_user != null) {
       _user = _user!.copyWith(
@@ -116,12 +115,12 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  // Naya method loading state ko manually set karne ke liye
+
   void setLoading(bool value) {
     _isLoading = value;
     notifyListeners();
   }
-  // Error message clear karne ka method
+
   void clearErrorMessage() {
     _errorMessage = null;
     notifyListeners();

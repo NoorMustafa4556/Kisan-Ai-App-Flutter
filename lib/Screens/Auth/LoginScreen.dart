@@ -34,14 +34,10 @@ class _LoginScreenState extends State<LoginScreen> {
   void _login() async {
     if (_formKey.currentState!.validate()) {
       final authProvider = Provider.of<AuthProvider>(context, listen: false);
-<<<<<<< HEAD
-      await authProvider.login(_emailController.text.trim(), _passwordController.text.trim());
-=======
       await authProvider.login(
         _emailController.text.trim(),
         _passwordController.text.trim(),
       );
->>>>>>> b11e7d7 (first commit)
 
       if (!mounted) return;
 
@@ -50,13 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
           msg: authProvider.errorMessage!,
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.BOTTOM,
-<<<<<<< HEAD
-          backgroundColor: AppStyles.errorColor,
-          textColor: AppStyles.whiteColor,
-=======
           backgroundColor: Theme.of(context).colorScheme.error,
           textColor: Colors.white,
->>>>>>> b11e7d7 (first commit)
           fontSize: 16.0,
         );
         authProvider.clearErrorMessage();
@@ -65,13 +56,8 @@ class _LoginScreenState extends State<LoginScreen> {
           msg: "Login Successful!",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
-<<<<<<< HEAD
           backgroundColor: AppStyles.primaryColor,
-          textColor: AppStyles.whiteColor,
-=======
-          backgroundColor: Theme.of(context).colorScheme.primary,
           textColor: Colors.white,
->>>>>>> b11e7d7 (first commit)
           fontSize: 16.0,
         );
         Navigator.of(context).pushReplacement(
@@ -83,15 +69,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    final authProvider = Provider.of<AuthProvider>(context);
-
-    return Scaffold(
-      backgroundColor: AppStyles.backgroundColor,
-      appBar: AppBar(
-        title: const Text(""),
-        backgroundColor: AppStyles.backgroundColor,
-=======
     final theme = Theme.of(context);
     final authProvider = Provider.of<AuthProvider>(context);
 
@@ -100,7 +77,6 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: const Text(""),
         backgroundColor: theme.scaffoldBackgroundColor,
->>>>>>> b11e7d7 (first commit)
         elevation: 0,
         automaticallyImplyLeading: false,
       ),
@@ -114,13 +90,9 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Text(
                   AppConstants.loginTitle,
-<<<<<<< HEAD
-                  style: AppStyles.headlineStyle.copyWith(color: AppStyles.primaryColor),
-=======
                   style: AppStyles.headlineStyle(context).copyWith(
-                    color: theme.colorScheme.primary,
+                    color: AppStyles.primaryColor,
                   ),
->>>>>>> b11e7d7 (first commit)
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: AppStyles.largePadding),
@@ -128,17 +100,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 // Email field
                 TextFormField(
                   controller: _emailController,
-<<<<<<< HEAD
-                  decoration: const InputDecoration(
-                    hintText: AppConstants.emailHint,
-                    prefixIcon: Icon(Icons.email, color: AppStyles.primaryColor),
-                  ),
-=======
                   decoration: InputDecoration(
                     hintText: AppConstants.emailHint,
-                    prefixIcon: Icon(Icons.email, color: theme.colorScheme.primary),
+                    prefixIcon: Icon(Icons.email, color: AppStyles.primaryColor),
                   ).applyDefaults(theme.inputDecorationTheme),
->>>>>>> b11e7d7 (first commit)
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -152,28 +117,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: AppStyles.defaultPadding),
 
-<<<<<<< HEAD
-                // Password field with eye icon
-=======
                 // Password field
->>>>>>> b11e7d7 (first commit)
                 TextFormField(
                   controller: _passwordController,
                   decoration: InputDecoration(
                     hintText: AppConstants.passwordHint,
-<<<<<<< HEAD
-                    prefixIcon: const Icon(Icons.lock, color: AppStyles.primaryColor),
+                    prefixIcon: Icon(Icons.lock, color: AppStyles.primaryColor),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscurePassword ? Icons.visibility_off : Icons.visibility,
                         color: AppStyles.primaryColor,
-=======
-                    prefixIcon: Icon(Icons.lock, color: theme.colorScheme.primary),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                        color: theme.colorScheme.primary,
->>>>>>> b11e7d7 (first commit)
                       ),
                       onPressed: () {
                         setState(() {
@@ -181,11 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         });
                       },
                     ),
-<<<<<<< HEAD
-                  ),
-=======
                   ).applyDefaults(theme.inputDecorationTheme),
->>>>>>> b11e7d7 (first commit)
                   obscureText: _obscurePassword,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -207,40 +156,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     child: Text(
                       AppConstants.forgotPassword,
-<<<<<<< HEAD
-                      style: AppStyles.linkTextStyle,
-=======
                       style: AppStyles.linkTextStyle(context),
->>>>>>> b11e7d7 (first commit)
                     ),
                   ),
                 ),
                 const SizedBox(height: AppStyles.defaultPadding),
 
                 authProvider.isLoading
-<<<<<<< HEAD
-                    ? const Center(
-                  child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(AppStyles.primaryColor),
-=======
                     ? Center(
                   child: CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      theme.colorScheme.primary,
+                      AppStyles.primaryColor,
                     ),
->>>>>>> b11e7d7 (first commit)
                   ),
                 )
                     : ElevatedButton(
                   onPressed: _login,
-<<<<<<< HEAD
-                  child: const Text(AppConstants.loginButtonText),
-=======
                   child: Text(
                     AppConstants.loginButtonText,
                     style: AppStyles.buttonTextStyle(context),
                   ),
->>>>>>> b11e7d7 (first commit)
                 ),
                 const SizedBox(height: AppStyles.largePadding),
 
@@ -249,11 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Text(
                       AppConstants.noAccountText,
-<<<<<<< HEAD
-                      style: AppStyles.bodyTextStyle,
-=======
                       style: AppStyles.bodyTextStyle(context),
->>>>>>> b11e7d7 (first commit)
                     ),
                     TextButton(
                       onPressed: () {
@@ -263,11 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Text(
                         AppConstants.signupButtonText,
-<<<<<<< HEAD
-                        style: AppStyles.linkTextStyle,
-=======
                         style: AppStyles.linkTextStyle(context),
->>>>>>> b11e7d7 (first commit)
                       ),
                     ),
                   ],
@@ -279,8 +206,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b11e7d7 (first commit)

@@ -2,15 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart' as genai;
 import 'package:flutter/cupertino.dart';
+import 'package:kisan_ai/Utils/AppStyles.dart';
 
 import '../../Utils/ChatLanguages.dart';
-import 'ChatMessage.dart'; // For CupertinoColors
+import 'ChatMessage.dart';
 
-// Local imports
 
-// IMPORTANT: Aapki Gemini API Key yahan add ki ja rahi hai.
-// Is key ko public repository par share karne se gurez karein.
-const String GEMINI_API_KEY = 'AIzaSyDes6jrXKdbraArYHI-7_B6FLxLvwMGPDM';
+const String GEMINI_API_KEY = 'AIzaSyAoazRI4juaQRwU6vUO6gPJLepSv99izRM';
 
 
 class ChatScreen extends StatefulWidget {
@@ -52,7 +50,7 @@ Your primary goal is to assist farmers with their queries.
 
   Future<void> _initializeChat() async {
     // Check if the API key is provided and not the placeholder
-    if (GEMINI_API_KEY == 'YOUR_ACTUAL_GEMINI_API_KEY_HERE' ||
+    if (GEMINI_API_KEY == '' ||
         GEMINI_API_KEY.isEmpty) {
       setState(() {
         _errorMessage = "Please provide a valid Gemini API key.";
@@ -193,7 +191,7 @@ Your primary goal is to assist farmers with their queries.
     return Scaffold(
       appBar: AppBar(
         title: const Text("Kisan AI Advisor Chat", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold)),
-        backgroundColor: CupertinoColors.activeGreen,
+        backgroundColor: AppStyles.primaryColor,
         centerTitle: true,
         actions: [
           // Language selection dropdown
@@ -229,7 +227,7 @@ Your primary goal is to assist farmers with their queries.
         // Your background image setup
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/Haadi.jpg"), // Make sure this asset exists
+            image: AssetImage("assets/images/Pakistan.jpg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -259,7 +257,7 @@ Your primary goal is to assist farmers with their queries.
             SafeArea(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor.withOpacity(0.9), // Slightly opaque for background image visibility
+                  color: Theme.of(context).cardColor.withOpacity(0.9),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.1),
@@ -286,10 +284,10 @@ Your primary goal is to assist farmers with their queries.
         : 'AI Advisor is typing...')
         : (_chatSession == null
         ? 'Initialization failed.'
-        : 'Poocho Kisan AI Advisor se (Ask Kisan AI Advisor)...');
+        : 'Enter Queries Here ');
 
     return IconTheme(
-      data: IconThemeData(color: CupertinoColors.activeGreen), // Icon color for send button
+      data: IconThemeData(color: AppStyles.primaryColor),
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
         child: Row(
