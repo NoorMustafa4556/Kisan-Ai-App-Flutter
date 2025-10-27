@@ -8,6 +8,7 @@ This project aims to **bridge technology and agriculture**, empowering farmers w
 ---
 ## 🌟 Description
 
+
 Kisan AI App is an innovative, AI-powered agricultural companion designed to empower farmers with intelligent insights and real-time decision support. Built using Flutter, this app harnesses the power of Artificial Intelligence (AI), Machine Learning (ML), and Data Analytics to simplify farming operations and improve crop productivity.
 
 Through a unified and user-friendly interface, farmers can access personalized crop recommendations, AI-based disease detection, fertilizer guidance, and real-time weather forecasts — all tailored to their local environment. The app also integrates market rate tracking to help farmers make informed financial decisions, ensuring that technology directly supports their daily livelihood.
@@ -75,13 +76,19 @@ By combining AI-driven insights with modern mobile technology, this app serves a
 | Area | Technology |
 |------|-------------|
 | **Framework** | Flutter |
-| **Language** | Dart |
-| **Backend** | Firebase / Node.js (if applicable) |
-| **AI/ML** | TensorFlow Lite / Python-trained Models |
+| **Language (Frontend)** | Dart |
+| **Language (Backend)** | Python 3.9+ |
+| **Backend Framework** | FastAPI |
+| **Machine Learning** | PyTorch, Scikit-learn |
+| **Computer Vision** | OpenCV |
 | **APIs** | OpenWeatherMap, Agri APIs, Google ML Kit |
-| **Database** | Firestore / SQLite |
+| **Database** | Firestore |
 | **State Management** | Provider |
+| **Data Handling & Visualization** | Pandas, NumPy, Matplotlib, Seaborn, Plotly |
 | **Design** | Material Design 3, Responsive UI |
+| **Development Tools** | Jupyter Notebook, Visual Studio Code, Android Studio |
+
+
 
 ---
 
@@ -132,9 +139,8 @@ lib/
 │ ├── ContactUsScreen.dart
 │ ├── CropDiseaseDetectionScreen.dart
 │ ├── CropYieldPredictor.dart
-│ ├── FertilizerRecommendationScreen.dart
+│ ├── DistrictYieldForecastingScreen.dart
 │ ├── HomeScreen.dart
-│ ├── MarketPriceScreen.dart
 │ ├── SettingsScreen.dart
 │ ├── SplashScreen.dart
 │ ├── ThemeSelectionScreen.dart
